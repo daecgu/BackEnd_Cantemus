@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 # cargar las variables de entorno del archivo .env
 load_dotenv()
 from app.api.v1.endpoints.users import router as api_router
@@ -9,6 +10,22 @@ from app.db.db_config import get_database
 app = FastAPI()
 # Conectarse a la base de datos.
 get_database()
+
+# Implementación de CORS
+origins = [
+    "http://localhost:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
+    "https://tufrontend.com",  # Reemplazar con el dominio de producción de tu frontend
+]
+
+# Configuración del middleware CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Lista de orígenes permitidos
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos
+    allow_headers=["*"],  # Permite todos los headers
+)
+
 # Incluir los routers
 app.include_router(api_router)
 app.include_router(canciones_router)
