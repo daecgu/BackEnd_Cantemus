@@ -1,0 +1,15 @@
+# pytest: solo se instala para el entorno de desarrollo para realizar los test, no sirve para el funcionamiento general.
+# Funcionamiento Básico General
+fastapi
+pydantic
+uvicorn
+python-dotenv
+
+# Base de datos
+mongoengine
+
+# Autenticación y Autorización.
+email-validator
+passlib
+python-jose
+argon2-cffi
