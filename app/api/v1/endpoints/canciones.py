@@ -21,7 +21,7 @@ def generate_id(lenght: int = 3) -> str:
 @router.post("/canciones/", status_code=status.HTTP_201_CREATED)
 async def create_songs():
     p = ProcesadorCanciones("/home/decheverri/PycharmProjects/BackEnd-cantemus/Canciones/",
-                            "la_bendicion.txt")
+                            "mi_corazon_quiere_alabar.txt")
     cancion = p.obtener_objeto_bbdd_cancion()
     cancion.id_cancion = generate_id()
     cancion.save()

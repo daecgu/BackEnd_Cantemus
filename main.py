@@ -14,6 +14,7 @@ get_database()
 # Implementación de CORS
 origins = [
     "http://localhost:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
+    "http://127.0.0.1:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
     "https://tufrontend.com",  # Reemplazar con el dominio de producción de tu frontend
 ]
 
@@ -32,3 +33,7 @@ app.include_router(canciones_router)
 
 # Configurar conexión a la base de datos (esto podría estar en otro módulo importado aquí)
 # Por ejemplo, utilizando una función de inicialización que usted defina en `app/db/db_config.py`
+"""
+docker run -d --name mi-backend -p 8000:8000 mi-backend-fastapi
+docker start mi-backend
+"""
