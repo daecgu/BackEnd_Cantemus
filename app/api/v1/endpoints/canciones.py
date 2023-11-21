@@ -2,23 +2,12 @@ from fastapi import APIRouter, status, HTTPException
 from app.models.cancion import Cancion
 from app.utils import ProcesadorCanciones
 from app.schemas.cancion import CancionSchema, DiapositivasSchema
-from helpers import crear_o_actualizar_contador
-import random
-import string
+from app.api.v1.endpoints.helpers import crear_o_aumentar_contador, generate_id
 
 router = APIRouter(tags=["Gestión Canciones"])
 
 
-def generate_id(lenght: int = 3) -> str:
-    dictionary: str = string.ascii_uppercase + string.digits
-    while True:
-        new_id = ''
-        for _ in range(lenght):
-            new_id = new_id + (random.choice(dictionary))
-        if not Cancion.objects(id_cancion=new_id).first():  # type: ignore
-            return new_id
-
-
+# pendiente de generalizar esta función.
 async def buscar_canciones_por_titulo_y_letra(texto_busqueda: str):
     pipeline = [
         {
@@ -44,6 +33,7 @@ async def buscar_canciones_por_titulo_y_letra(texto_busqueda: str):
     return list(resultados)
 
 
+# Pendiente de generalizar esta función.
 @router.get("/buscar-canciones-t-l/", response_model=list[CancionSchema], status_code=status.HTTP_200_OK)
 async def buscar_canciones_titulo_letra(query: str):
     """
@@ -58,7 +48,7 @@ async def create_songs():
     p = ProcesadorCanciones("/home/decheverri/PycharmProjects/BackEnd-cantemus/Canciones/",
                             "mi_corazon_quiere_alabar.txt")
     cancion = p.obtener_objeto_bbdd_cancion()
-    cancion.id_cancion = generate_id()
+    cancion.id_cancion = generate_id(crear_o_aumentar_contador("canciones"))
     cancion.save()
     return {"message": "Cancion Creada", "id_cancion": cancion.id_cancion}
 
