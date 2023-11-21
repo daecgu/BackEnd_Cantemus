@@ -2,6 +2,7 @@ from fastapi import APIRouter, status, HTTPException
 from app.models.cancion import Cancion
 from app.utils import ProcesadorCanciones
 from app.schemas.cancion import CancionSchema, DiapositivasSchema
+from helpers import crear_o_actualizar_contador
 import random
 import string
 
