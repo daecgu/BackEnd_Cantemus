@@ -8,7 +8,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -27,6 +26,7 @@ bin/
 .installed.cfg
 *.egg
 MANIFEST
+Canciones
 
 # PyInstaller
 # Usually these files are written by a python script from a template
