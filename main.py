@@ -1,3 +1,5 @@
+import glob
+
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
@@ -37,3 +39,21 @@ app.include_router(canciones_router)
 docker run -d --name mi-backend -p 8000:8000 mi-backend-fastapi
 docker start mi-backend
 """
+
+# def crear_cancion(texto):
+#     from app.api.v1.endpoints.helpers import generate_id, crear_o_aumentar_contador
+#     from app.utils.procesador_canciones import ProcesadorCanciones
+#     p = ProcesadorCanciones("",
+#                             texto)
+#     cancion = p.obtener_objeto_bbdd_cancion()
+#     cancion.id_cancion = generate_id(crear_o_aumentar_contador("canciones"))
+#     cancion.save()
+#     print({"message": "Cancion Creada", "id_cancion": cancion.id_cancion})
+#
+# ruta = '/home/decheverri/PycharmProjects/BackEnd-cantemus/Canciones/Latin/*.txt'
+#
+# listado = glob.glob(ruta)
+#
+# for each in listado:
+#     crear_cancion(each)
+
