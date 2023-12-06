@@ -17,7 +17,9 @@ get_database()
 origins = [
     "http://localhost:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
     "http://127.0.0.1:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
-    "https://tufrontend.com",  # Reemplazar con el dominio de producción de tu frontend
+    "https://https://frontcantoral.onrender.com/",  # Reemplazar con el dominio de producción de tu frontend
+    "https://frontcantoral.onrender.com/listado-canciones",  # Reemplazar con el dominio de producción de tu frontend
+    "https://https://frontcantoral.onrender.com/reproductor",  # Reemplazar con el dominio de producción de tu frontend
 ]
 
 # Configuración del middleware CORS
