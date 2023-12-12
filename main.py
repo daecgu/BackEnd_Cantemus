@@ -13,7 +13,7 @@ app = FastAPI()
 # Conectarse a la base de datos.
 get_database()
 
-# Implementación de CORS
+# Implementación de CORS # Implementar mediante variables de entorno??
 origins = [
     "http://localhost:3000",  # Si el frontend se ejecuta en localhost con puerto 3000
     "http://127.0.0.1:3000",  # Si el frontend se ejecuta en localhost con puerto 3000

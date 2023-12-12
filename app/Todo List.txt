@@ -1,0 +1,2 @@
+-- BaseSettings --> para leer correctamente las variables de entorno. Herramienta para manejar la configuración de aplicaciones de manera
+organizada, segura y escalable.
