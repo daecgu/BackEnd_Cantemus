@@ -3,6 +3,7 @@
 @@Título: Título de la Canción
 @@Artista: Desconocido o Nombre Artista
 @@Idioma: Idioma de la canción.
+@@Temática: Eucarística / Liturgia  / Salmos / María / Jesús / Santos / Alabanza / Sanación / Petición / Penitencial / Adviento / Cuaresma / Navidad / Tiempo Ordinario / Pascua / Oración / Reino
 ----
 Lorem ipsum dolor sit amet,
 consectetur adipiscing elit.
@@ -45,6 +46,7 @@ class ProcesadorCanciones:
         self.artista: str = ""
         self.idioma: str = ""
         self.letra: str = ""
+        self.tematica: str = ""
         self.diapositivas: list = []
         self.cargar_cancion()
 
@@ -66,6 +68,10 @@ class ProcesadorCanciones:
             self.idioma = re.search(r"^@@Idioma:\s*(.*)", texto, re.MULTILINE).group(1)  # type: ignore
         except AttributeError:
             self.idioma = "Desconocido/Unknown"
+        try:
+            self.tematica = re.search(r"^@@Temática:\s*(.*)", texto, re.MULTILINE).group(1)  # type: ignore
+        except AttributeError:
+            self.tematica = ""
         self.letra = texto.split("----\n")[1]
         self.diapositivas = self.letra.split('\n\n')
 
@@ -75,6 +81,7 @@ class ProcesadorCanciones:
             artista=self.artista,
             idioma=self.idioma,
             letra=self.letra,
+            tematica=self.tematica,
             diapositivas=self.diapositivas
         )
 

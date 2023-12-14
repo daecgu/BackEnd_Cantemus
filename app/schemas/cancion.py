@@ -7,6 +7,7 @@ class CancionSchema(BaseModel):
     artista: str
     idioma: str
     letra: str
+    tematica: str
 
 
 class CancionDiapositivasSchema(CancionSchema):
