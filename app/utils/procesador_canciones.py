@@ -46,7 +46,7 @@ class ProcesadorCanciones:
         self.artista: str = ""
         self.idioma: str = ""
         self.letra: str = ""
-        self.tematica: str = ""
+        self.tematica: list = []
         self.diapositivas: list = []
         self.cargar_cancion()
 
@@ -69,9 +69,10 @@ class ProcesadorCanciones:
         except AttributeError:
             self.idioma = "Desconocido/Unknown"
         try:
-            self.tematica = re.search(r"^@@Temática:\s*(.*)", texto, re.MULTILINE).group(1)  # type: ignore
+            tematicas_str = re.search(r"^@@Temática:\s*(.*)", texto, re.MULTILINE).group(1)  # type: ignore
+            self.tematica = [tematica.strip() for tematica in tematicas_str.split('/') if tematica.strip()]
         except AttributeError:
-            self.tematica = ""
+            self.tematica = []
         self.letra = texto.split("----\n")[1]
         self.diapositivas = self.letra.split('\n\n')
 

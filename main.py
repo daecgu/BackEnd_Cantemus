@@ -1,5 +1,3 @@
-import glob
-
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,6 +41,7 @@ docker run -d --name mi-backend -p 8000:8000 mi-backend-fastapi
 docker start mi-backend
 """
 
+# import glob
 # def crear_cancion(texto):
 #     from app.api.v1.endpoints.helpers import generate_id, crear_o_aumentar_contador
 #     from app.utils.procesador_canciones import ProcesadorCanciones
@@ -59,4 +58,3 @@ docker start mi-backend
 #
 # for each in listado:
 #     crear_cancion(each)
-

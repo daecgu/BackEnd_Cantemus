@@ -7,5 +7,5 @@ class Cancion(Document):
     artista = StringField(required=True)
     idioma = StringField(required=True)
     letra = StringField(required=True)
-    tematica = StringField(required=False)
+    tematica = ListField(StringField(), default=list)
     diapositivas = ListField(StringField(), default=list)

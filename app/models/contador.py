@@ -1,3 +1,5 @@
+# Necesario para Id único ordenado en MongoDB
+
 from mongoengine import Document, StringField, IntField
 
 
