@@ -15,7 +15,7 @@ router = APIRouter(tags=["Gestión Usuarios"])
 
 @router.post("/users/", response_model=UserDisplay, status_code=status.HTTP_201_CREATED)
 async def create_user(user: UserCreate = Body(...)):
-    if UserModel.objects(username=user.username).first():  # type: ignore
+    if UserModel.objects(username=user.username).first():
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"El usuario con el nombre {user.username} ya existe."
@@ -29,7 +29,7 @@ async def create_user(user: UserCreate = Body(...)):
 @router.get("/users/{user_id}", response_model=UserDisplay)
 async def read_user(user_id: str):
     # Busca el usuario por ID
-    user_obj = UserModel.objects(id=user_id).first()  # type: ignore
+    user_obj = UserModel.objects(id=user_id).first()
     if user_obj is None:
         # Si no se encuentra el usuario, lanza una excepción
         raise HTTPException(status_code=404, detail="User not found")
@@ -46,7 +46,7 @@ async def read_user(user_id: str):
 @router.put("/users/{user_id}", response_model=UserDisplay)
 async def update_user(user_id: str, user_update: UserUpdate = Body(...)):
     # Busca el usuario por ID
-    user_obj = UserModel.objects(id=user_id).first()  # type: ignore
+    user_obj = UserModel.objects(id=user_id).first()
     if user_obj is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
@@ -55,9 +55,9 @@ async def update_user(user_id: str, user_update: UserUpdate = Body(...)):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Contraseña actual incorrecta")
 
     # Comprobación de usuario y email únicos
-    if user_update.username and UserModel.objects(username=user_update.username, id__ne=user_id).first():  # type:ignore
+    if user_update.username and UserModel.objects(username=user_update.username, id__ne=user_id).first():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El nombre de usuario ya está en uso")
-    if user_update.email and UserModel.objects(email=user_update.email, id__ne=user_id).first():  # type: ignore
+    if user_update.email and UserModel.objects(email=user_update.email, id__ne=user_id).first():
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El correo electrónico ya está en uso")
 
     # Actualiza los campos proporcionados
@@ -80,7 +80,7 @@ async def update_user(user_id: str, user_update: UserUpdate = Body(...)):
 @router.delete("/users/{user_id}", response_model=UserDisplay)
 async def delete_user(user_id: str):
     # Busca el usuario por ID
-    user_obj = UserModel.objects(id=user_id).first()  # type: ignore
+    user_obj = UserModel.objects(id=user_id).first()
     if user_obj:
         # Si el usuario existe, elimínalo
         deleted_user = user_obj.to_mongo().to_dict()  # Convertir a diccionario antes de eliminar
