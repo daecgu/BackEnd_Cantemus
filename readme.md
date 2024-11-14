@@ -1,3 +1,5 @@
+Implementar HTTP3 para mejor conexión en teléfonos móviles :) https://medium.com/@vamsikrishnabhuvanam/enhancing-fastapi-performance-with-http-2-and-quic-http-3-for-efficient-machine-learning-189cd054846e
+
 /api: Contiene las rutas/endpoints de tu API, organizados por versiones para facilitar el mantenimiento y la escalabilidad a medida que tu API crece.
 
 /core: Aloja la configuración central de tu aplicación, junto con cualquier lógica relacionada con la seguridad.
